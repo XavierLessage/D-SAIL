@@ -5,6 +5,9 @@ Created on Wed Sep  1 15:44:11 2021
 @author: to fill
 
 Module with functions used to convert DICOM files (.dcm) to .png/.bmp and .json files and from .png/.bmp to DICOM. 
+
+The function 'compressToPng' calls executables from OpenJPEG (https://www.openjpeg.org/) available at 'https://github.com/uclouvain/openjpeg/releases/tag/v2.4.0'. 
+
 """
 
 import os
@@ -176,7 +179,7 @@ def compressToPng(file_path,software_root,compress_ratio=1):
     file_path : string
         /.../filename.png
     software_root : string
-        Path to openjpeg .exe programs
+        Path to the folder containing the openjpeg .exe programs
     compress_ratio : int, optional
         Best if multiple of 8. The default is 1.
 
