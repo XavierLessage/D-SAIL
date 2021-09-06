@@ -2,7 +2,9 @@
 """
 Created on Wed Sep  1 15:44:11 2021
 
-@author: DELINTE Nicolas
+@author: to fill
+
+Module with functions used to convert DICOM files (.dcm) to .png/.bmp and .json files and from .png/.bmp to DICOM. 
 """
 
 import os
@@ -193,34 +195,4 @@ def compressToPng(file_path,software_root,compress_ratio=1):
               ' -o '+file_path.rsplit(".",1)[0]+'.png')
     os.system('rm '+file_path.rsplit(".",1)[0]+'.j2k')
     
-    
-if __name__ == '__main__':
-    
-    root='D:/TRAIL/'
-    software_root=root+'Software/openjpeg-v2.4.0-windows-x64/bin/'
-    file_path=root+'Databases/Nico/export/home1/sdc_image_pool/images/p1455/e1699/s34851/i34890147.MRDC.19'
-    dcm_file_path=root+'Databases/Nico/export/home1/sdc_image_pool/images/p1455/e1699/s34851/i34890147.MRDC.19'
-
-    
-    decomposeDICOM(dcm_file_path, root, removeImgInJson=True)
-    
-    compressToPng(root+'i34890147.MRDC.19.bmp', software_root, compress_ratio=80)
-    
-    dicomFromImgOrJson(root+'i34890147.MRDC.19.png',root,verbose=True)
-    
-    d=pydicom.dcmread(root+'i34890147.MRDC.19.dcm',force=True)
-    
-    file_path='D:/TRAIL/Databases/COVID-19_Radiography_Dataset/data/test/COVID/COVID-15.png'
-    
-    dm=pydicom.dcmread(dcm_file_path)
-    
-    dicomFromImgOrJson(file_path,root,metadata_path=dcm_file_path,verbose=True)
-    
-    dc = pydicom.dcmread(root+'COVID-15.dcm',force=True)
-    
-    decomposeDICOM(root+'COVID-15.dcm',root,img_format='png',
-                        removeImgInJson=True)
-
-    dicomFromImgOrJson(root+'COVID-15.json',root,verbose=True)
-    
-    dd = pydicom.dcmread(root+'COVID-15.dcm',force=True)
+  
