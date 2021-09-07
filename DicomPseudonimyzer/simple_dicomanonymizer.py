@@ -7,7 +7,7 @@ from typing import List, NewType
 import pydicom
 from random import randint
 
-from dicomfields import *
+from dicom_fields import *
 from format_tag import tag_to_hex_strings
 
 import hashlib
@@ -244,26 +244,20 @@ def replace_and_keep_correspondance(dataset, tag):
     data_changed = True
     element = dataset.get(tag)
     if element is not None:
-        # print(element)
         new_value_patient_id = hashlib.sha256((str(dataset.PatientID) + str(os.urandom(32))).encode()).hexdigest()
         new_value_accession_number = hashlib.sha256((str(dataset.AccessionNumber) + str(os.urandom(32))).encode()).hexdigest()
         if element.VR == "LO": # Patient ID
             if element.value not in data[:,0]: # Patient not in csv
-                # print("Patient ID 0")
                 data = np.append(data, [[str(dataset.PatientID), new_value_patient_id, str(dataset.AccessionNumber), new_value_accession_number]], axis=0)
-                # print("avant", dataset.PatientID)
                 dataset.PatientID = new_value_patient_id
-                # print("apres", dataset.PatientID)
                 dataset.AccessionNumber = new_value_accession_number
             else: # Patient in csv
                 if dataset.AccessionNumber in data[:,2]: # AccessNumber in csv
-                    # print("Patient ID 1, AccessNumber 1")
                     idx = np.argwhere(data[:,2] == str(dataset.AccessionNumber))[0][0]
                     dataset.AccessionNumber = data[idx,3]
                     dataset.PatientID = data[idx,1]
                     data_changed = False
                 else: # AccessNumber not in csv
-                    # print("PatientID 1, AccessNumber 0")
                     idx = np.argwhere(data[:,0] == str(dataset.PatientID))[0][0]
                     data = np.append(data, [[data[idx,0], data[idx,1], str(dataset.AccessionNumber), new_value_accession_number]], axis=0)
                     dataset.PatientID = data[idx,1]
@@ -326,7 +320,7 @@ def initialize_actions() -> dict:
 
 
 def anonymize_dicom_file(in_file: str, out_file: str, extra_anonymization_rules: dict = None,
-                         delete_private_tags: bool = True) -> None:
+                         delete_private_tags: bool = True, rename_files: bool = False) -> None:
     """
     Anonymize a DICOM file by modifying personal tags
 
@@ -343,7 +337,14 @@ def anonymize_dicom_file(in_file: str, out_file: str, extra_anonymization_rules:
         anonymize_dataset(dataset, extra_anonymization_rules, delete_private_tags)
 
         # Store modified image
-        dataset.save_as(out_file)
+        if rename_files:
+            start_file_name = out_file.rfind('/')
+            pseudo = str(dataset.PatientID) + '-' + str(dataset.AccessionNumber)
+            num_file = str(len(os.listdir(out_file[:start_file_name])))
+            full_out_path =  out_file[:start_file_name] + num_file + '_' + pseudo
+            dataset.save_as(full_out_path)
+        else:
+            dataset.save_as(out_file)
 
 
 def get_private_tag(dataset, tag):
