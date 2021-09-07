@@ -4,15 +4,6 @@ Created on Wed Sep  1 15:44:11 2021
 @author: to fill
 Module with functions used to convert DICOM files (.dcm) to .png/.bmp and .json files and from .png/.bmp to DICOM. 
 The function 'compressToPng' calls executables from OpenJPEG (https://www.openjpeg.org/) available at 'https://github.com/uclouvain/openjpeg/releases/tag/v2.4.0'. 
-Required packages : 
-    os
-    random
-    string
-    json
-    subprocess
-    cv2         (opencv-python)
-    pydicom
-    numpy
 """
 
 import os
