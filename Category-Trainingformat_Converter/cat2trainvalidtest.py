@@ -1,3 +1,9 @@
+    '''
+    Divides a directory containing only contain folders with each category to classify
+    into 'train', 'valid' and 'test' folders for ML with custom splitting percentages
+
+    '''
+
 import shutil
 import os
 import random

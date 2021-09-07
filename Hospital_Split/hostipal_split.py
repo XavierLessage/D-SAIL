@@ -1,3 +1,7 @@
+    '''
+    Splits a large dataset (grouped by category) into small datasets with custom individual sizes
+    '''
+
 import shutil
 import os
 import random

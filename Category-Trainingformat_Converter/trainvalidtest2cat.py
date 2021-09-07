@@ -1,3 +1,9 @@
+    '''
+    Groups a directory containing a 'train', 'test' and 'valid' (code is case sensitive) folders for ML with category sub folders
+    into category folders with 'train', 'test' and 'valid' sub folders.
+
+    '''
+
 import shutil
 import os
 
