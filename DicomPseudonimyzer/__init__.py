@@ -1,0 +1,2 @@
+import DicomPseudonimyzer.anonymizer
+import DicomPseudonimyzer.simple_dicomanonymizer

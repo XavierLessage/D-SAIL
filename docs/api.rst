@@ -5,6 +5,10 @@ Welcome to the API.
 
 .. autosummary::
    :toctree: DIRNAME
+   :recursive:
 
-   DICOM_PNGJSON_Converter.DICOM_converter
-   sphinx.util.relative_uri
+   Category_Trainingformat_Converter   
+   DICOM_PNGJSON_Converter
+   DicomPseudonimyzer
+   Hospital_Split
+   LabelCreator
