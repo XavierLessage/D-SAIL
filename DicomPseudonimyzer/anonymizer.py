@@ -7,9 +7,9 @@ import os
 import sys
 import tqdm
 
-from simpledicomanonymizer import *
+from simple_dicomanonymizer import *
 
-def anonymize(input_path: str, output_path: str, anonymization_actions: dict, deletePrivateTags: bool) -> None:
+def anonymize(input_path: str, output_path: str, anonymization_actions: dict, deletePrivateTags: bool, rename_files: bool) -> None:
     """
     Read data from input path (folder or file) and launch the anonymization.
 
@@ -49,7 +49,7 @@ def anonymize(input_path: str, output_path: str, anonymization_actions: dict, de
 
     progress_bar = tqdm.tqdm(total=len(input_files_list))
     for cpt in range(len(input_files_list)):
-        anonymize_dicom_file(input_files_list[cpt], output_files_list[cpt], anonymization_actions, deletePrivateTags)
+        anonymize_dicom_file(input_files_list[cpt], output_files_list[cpt], anonymization_actions, deletePrivateTags, rename_files)
         progress_bar.update(1)
 
     progress_bar.close()
@@ -95,6 +95,8 @@ def main(defined_action_map = {}):
     parser.add_argument('--dictionary', action='store', help='File which contains a dictionary that can be added to the original one')
     parser.add_argument('--keepPrivateTags', action='store_true', dest='keepPrivateTags', help='If used, then private tags won\'t be deleted')
     parser.set_defaults(keepPrivateTags=False)
+    parser.add_argument('--renameFiles', action='store_true', dest='renameFiles', help="If used, rename output files using PaitentID + AccessionNumber")
+    parser.set_defaults(renameFiles=False)
     args = parser.parse_args()
 
     input_path = args.input
@@ -160,7 +162,7 @@ def main(defined_action_map = {}):
                 cpt += 1
 
     # Launch the anonymization
-    anonymize(input_path, output_path, new_anonymization_actions, not args.keepPrivateTags)
+    anonymize(input_path, output_path, new_anonymization_actions, not args.keepPrivateTags, args.renameFiles)
 
 if __name__ == "__main__":
     main()
