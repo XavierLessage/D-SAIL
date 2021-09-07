@@ -15,6 +15,7 @@ import csv
 import numpy as np
 
 dictionary = {}
+lookup_path = None
 
 
 # Regexp function
@@ -232,10 +233,11 @@ def delete_or_empty_or_replace_UID(dataset, tag):
         else:
             empty_element(element)
 
-def replace_and_keep_correspondance(dataset, tag):
-    csv_path = "./lookup_table.csv"
-    if os.path.exists(csv_path):
-        with open(csv_path, 'r') as csvfile:
+def replace_and_keep_correspondence(dataset, tag):
+    if lookup_path is None:
+        raise ValueError("Missing path to lookup table to save correspondence")
+    if os.path.exists(lookup_path):
+        with open(lookup_path, 'r') as csvfile:
             reader = csv.reader(csvfile)
             data = np.array(list(reader))
     else:
@@ -264,7 +266,7 @@ def replace_and_keep_correspondance(dataset, tag):
                     dataset.AccessionNumber = new_value_accession_number
 
     if data_changed:
-        np.savetxt(csv_path, data, delimiter=',', fmt="%s")
+        np.savetxt(lookup_path, data, delimiter=',', fmt="%s")
 
 # Generation functions
 
@@ -278,6 +280,7 @@ actions_map_name_functions = {
     "delete_or_replace": delete_or_replace,
     "delete_or_empty_or_replace": delete_or_empty_or_replace,
     "delete_or_empty_or_replace_UID": delete_or_empty_or_replace_UID,
+    "replace_and_keep_correspondance": replace_and_keep_correspondence,
     "keep": keep,
     "regexp": regexp
 }
@@ -315,11 +318,11 @@ def initialize_actions() -> dict:
     anonymization_actions.update(generate_actions(X_D_TAGS, delete_or_replace))
     anonymization_actions.update(generate_actions(X_Z_D_TAGS, delete_or_empty_or_replace))
     anonymization_actions.update(generate_actions(X_Z_U_STAR_TAGS, delete_or_empty_or_replace_UID))
-    anonymization_actions.update(generate_actions(P_TAGS, replace_and_keep_correspondance))
+    anonymization_actions.update(generate_actions(P_TAGS, replace_and_keep_correspondence))
     return anonymization_actions
 
 
-def anonymize_dicom_file(in_file: str, out_file: str, extra_anonymization_rules: dict = None,
+def anonymize_dicom_file(in_file: str, out_file: str, lookup_file: str = None, extra_anonymization_rules: dict = None,
                          delete_private_tags: bool = True, rename_files: bool = False) -> None:
     """
     Anonymize a DICOM file by modifying personal tags
@@ -328,11 +331,15 @@ def anonymize_dicom_file(in_file: str, out_file: str, extra_anonymization_rules:
 
     :param in_file: File path or file-like object to read from
     :param out_file: File path or file-like object to write to
+    :param lookup_file: File path to the lookup table.
     :param extra_anonymization_rules: add more tag's actions
     :param delete_private_tags: Define if private tags should be delete or not
     """
     if (os.path.isfile(in_file)):
         dataset = pydicom.dcmread(in_file, force=True)
+        
+        global lookup_path
+        lookup_path = lookup_file
 
         anonymize_dataset(dataset, extra_anonymization_rules, delete_private_tags)
 

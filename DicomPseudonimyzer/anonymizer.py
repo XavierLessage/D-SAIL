@@ -9,15 +9,18 @@ import tqdm
 
 from simple_dicomanonymizer import *
 
-def anonymize(input_path: str, output_path: str, anonymization_actions: dict, deletePrivateTags: bool, rename_files: bool) -> None:
+def anonymize(input_path: str, output_path: str,  lookup_path: str, anonymization_actions: dict,
+                deletePrivateTags: bool, rename_files: bool) -> None:
     """
     Read data from input path (folder or file) and launch the anonymization.
 
     :param input_path: Path to a folder or to a file. If set to a folder,
     then cross all over subfiles and apply anonymization.
     :param output_path: Path to a folder or to a file.
+    :param csv_path: Path to lookup table csv path.
     :param anonymization_actions: List of actions that will be applied on tags.
     :param deletePrivateTags: Whether to delete private tags.
+    :param renameFiles: Whether to remane output files with pseudo. 
     """
     # Get input arguments
     input_folder = ''
@@ -49,7 +52,7 @@ def anonymize(input_path: str, output_path: str, anonymization_actions: dict, de
 
     progress_bar = tqdm.tqdm(total=len(input_files_list))
     for cpt in range(len(input_files_list)):
-        anonymize_dicom_file(input_files_list[cpt], output_files_list[cpt], anonymization_actions, deletePrivateTags, rename_files)
+        anonymize_dicom_file(input_files_list[cpt], output_files_list[cpt], lookup_path, anonymization_actions, deletePrivateTags, rename_files)
         progress_bar.update(1)
 
     progress_bar.close()
@@ -92,6 +95,7 @@ def main(defined_action_map = {}):
     '\'regexp\' action takes two arguments: '\
         '1. regexp to find substring '\
         '2. the string that will replace the previous found string')
+    parser.add_argument('--lookup', action='store', help='Path to the lookup table to be written after pseudonymization')
     parser.add_argument('--dictionary', action='store', help='File which contains a dictionary that can be added to the original one')
     parser.add_argument('--keepPrivateTags', action='store_true', dest='keepPrivateTags', help='If used, then private tags won\'t be deleted')
     parser.set_defaults(keepPrivateTags=False)
@@ -162,7 +166,7 @@ def main(defined_action_map = {}):
                 cpt += 1
 
     # Launch the anonymization
-    anonymize(input_path, output_path, new_anonymization_actions, not args.keepPrivateTags, args.renameFiles)
+    anonymize(input_path, output_path, args.lookup, new_anonymization_actions, not args.keepPrivateTags, args.renameFiles)
 
 if __name__ == "__main__":
     main()
