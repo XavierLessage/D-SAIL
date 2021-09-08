@@ -14,12 +14,6 @@ import os
 import sys
 sys.path.insert(0, os.path.abspath('../..'))
 
-import dicom_pseudonymizer.utils.dicom_fields
-import dicom_pseudonymizer.utils.format_tag
-import dicom_pseudonymizer.utils.simple_dicomanonymizer
-import dicom_pseudonymizer.anonymizer
-
-
 # -- Project information -----------------------------------------------------
 
 project = 'D-SAIL'
