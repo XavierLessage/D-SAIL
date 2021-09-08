@@ -14,5 +14,5 @@ Welcome to the API.
    Hospital_Split
    LabelCreator
 
-.. automodule:: Secure-privacy-preserving-and-federated-machine-learning.DICOM_PNGJSON_Converter.DICOM_converter
+.. automodule:: DICOM_PNGJSON_Converter.DICOM_converter
    :members:
