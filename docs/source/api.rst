@@ -26,3 +26,22 @@ DICOM_converter
    :members:
    :undoc-members:
    :show-inheritance:
+
+Category_Trainingformat_Converter
+-----------------------------------
+
+cat2trainvalidtest
+^^^^^^^^^^^^^^^^^^^
+
+.. automodule:: Category_Trainingformat_Converter.cat2trainvalidtest
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+trainvalidtest2cat
+^^^^^^^^^^^^^^^^^^^
+
+.. automodule:: Category_Trainingformat_Converter.trainvalidtest2cat
+   :members:
+   :undoc-members:
+   :show-inheritance:
