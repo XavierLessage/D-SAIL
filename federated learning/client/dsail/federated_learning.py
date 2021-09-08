@@ -1,7 +1,7 @@
 import flwr as fl
 from fastcore.basics import *
-from utils import *
-from differential_privacy import *
+from dsail.utils import *
+from dsail.differential_privacy import *
 
 from collections import OrderedDict
 

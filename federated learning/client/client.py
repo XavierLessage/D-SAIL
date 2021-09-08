@@ -1,7 +1,7 @@
 from opacus.utils import module_modification
 from fastai.vision.all import *
-from federated_learning import *
-from utils import *
+from dsail.federated_learning import *
+from dsail.utils import *
 
 
 @call_parse
@@ -35,7 +35,12 @@ def main(
         get_y = parent_label,
         splitter = GrandparentSplitter())
 
+    
+    print(dblock.datasets(data_path).train.__class__)
+
     dls = dblock.dataloaders(data_path, bs=bs, num_workers=0)
+    #dls = dblock.dataloaders(data_path, bs=bs, num_workers=0, sample=ImbalancedDatasetSampler(dblock.datasets(data_path).train))
+
 
     if seed is not None: set_seed(dls, seed)
 
