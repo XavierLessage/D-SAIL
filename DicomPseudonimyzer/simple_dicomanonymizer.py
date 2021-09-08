@@ -7,8 +7,8 @@ from typing import List, NewType
 import pydicom
 from random import randint
 
-from dicom_fields import *
-from format_tag import tag_to_hex_strings
+# from dicom_fields import *
+# from format_tag import tag_to_hex_strings
 
 import hashlib
 import csv
