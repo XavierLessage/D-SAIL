@@ -1,8 +1,10 @@
-# This code was taken and adapted from https://github.com/KitwareMedical/dicom-anonymizer
+'''
+    Tags anonymized in DICOM standard
+    Documentation for groups meaning can be found in default associated actions.
+    http://dicom.nema.org/dicom/2013/output/chtml/part15/chapter_E.html#table_E.1-1
 
-# Tags anonymized in DICOM standard
-# Documentation for groups meaning can be found in default associated actions.
-# http://dicom.nema.org/dicom/2013/output/chtml/part15/chapter_E.html#table_E.1-1
+    This code was taken and adapted from https://github.com/KitwareMedical/dicom-anonymizer
+'''
 
 # Replaced tags
 D_TAGS = [

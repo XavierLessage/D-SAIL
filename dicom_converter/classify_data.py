@@ -15,6 +15,7 @@ import argparse
 def get_tag_from_json(json_path,tag):
     '''
     Get tag value from .json fiel containing DICOM metadata
+
     Parameters
     ----------
     json_path : string
@@ -36,6 +37,7 @@ def get_tag_from_json(json_path,tag):
 def classify_in_labelled_folders(inputFolder, labelTag, outputDir):
     '''
     Classify the IMAGES vs METADATA in folders according to the label tag   
+
     Parameters
     ----------
     inputFolder : string
