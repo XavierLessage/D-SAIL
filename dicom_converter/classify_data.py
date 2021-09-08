@@ -12,7 +12,7 @@ import shutil
 import argparse
 
 
-def getTagFromJson(json_path,tag):
+def get_tag_from_json(json_path,tag):
     '''
     Get tag value from .json fiel containing DICOM metadata
     Parameters
@@ -53,7 +53,7 @@ def classify_in_labelled_folders(inputFolder, labelTag, outputDir):
         if file.endswith(".json"):
             jsonFilePath = inputFolder + file
             associatedPngFilePath = jsonFilePath[:-5] + '.png'
-            labelValue = getTagFromJson(jsonFilePath[:-5], labelTag)
+            labelValue = get_tag_from_json(jsonFilePath[:-5], labelTag)
             
             
             newPathJson = outputDir + '/METADATA/JSON-' + str(labelValue) + '/'

@@ -6,7 +6,7 @@
 import shutil
 import os
 
-def trainvalidtest2cat(datapath =""):
+def dataset_to_cat(datapath =""):
     '''
 
     Parameters

@@ -4,7 +4,7 @@ Created on Wed Sep  1 15:44:11 2021
 
 Module with functions used to convert DICOM files (.dcm) to .png/.bmp and .json files and from .png/.bmp to DICOM. 
 
-The function 'compressToPng' calls executables from OpenJPEG (https://www.openjpeg.org/) available at 'https://github.com/uclouvain/openjpeg/releases/tag/v2.4.0'. 
+The function 'compress_to_png' calls executables from OpenJPEG (https://www.openjpeg.org/) available at 'https://github.com/uclouvain/openjpeg/releases/tag/v2.4.0'. 
 """
 
 import os
@@ -16,7 +16,7 @@ import cv2
 import pydicom
 import numpy as np
 
-def imgFromDICOM(ds):
+def img_from_dicom(ds):
     '''
     Extract array from dicom dataset 'dcm' with [0,256] pixel intensities.
 
@@ -41,7 +41,7 @@ def imgFromDICOM(ds):
     
     return img
     
-def decomposeDICOM(file_path,output_path,img_format='bmp',removeImgInJson=False):
+def decompose_dicom(file_path,output_path,img_format='bmp',removeImgInJson=False):
     '''
     Divides dicom file into a .json file with the dicom metadata and a 
     .'img_format' file containing the image.
@@ -70,7 +70,7 @@ def decomposeDICOM(file_path,output_path,img_format='bmp',removeImgInJson=False)
     
     ds = pydicom.dcmread(file_path,force=True)
     
-    img = imgFromDICOM(ds)
+    img = img_from_dicom(ds)
     
     if removeImgInJson==True:
         ds.PixelData=None
@@ -81,7 +81,7 @@ def decomposeDICOM(file_path,output_path,img_format='bmp',removeImgInJson=False)
     with open(output_path+filename+'.json','w') as outfile:
         json.dump(metadata, outfile)
     
-def dicomFromImgOrJson(file_path,output_folder,metadata_path=None,
+def dicom_from_img_or_json(file_path,output_folder,metadata_path=None,
                        randomizeName=False,verbose=False):
     '''
     Creates a dicom from a .json file or a .png/.bmp file
@@ -163,7 +163,7 @@ def dicomFromImgOrJson(file_path,output_folder,metadata_path=None,
     
     ds.save_as(output_folder+filename+'.dcm')
 
-def compressToPng(file_path,software_root,compress_ratio=1):
+def compress_to_png(file_path,software_root,compress_ratio=1):
     '''
     Compresses an image to a .png with a specified 'compress_ratio'
 
@@ -190,7 +190,7 @@ def compressToPng(file_path,software_root,compress_ratio=1):
               ' -o '+file_path.rsplit(".",1)[0]+'.png')
     os.system('rm '+file_path.rsplit(".",1)[0]+'.j2k')
     
-def getTagFromJson(json_path,tag):
+def get_tag_from_json(json_path,tag):
     '''
     Get tag value from .json fiel containing DICOM metadata
 

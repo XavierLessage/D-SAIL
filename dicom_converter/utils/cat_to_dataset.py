@@ -8,7 +8,7 @@ import shutil
 import os
 import random
 
-def cat2trainvalidtest(datapath ="",trainset_percentage = 0.7,validset_percentage = 0.2,testset_percentage = 0.1,seed =3):
+def cat_to_dataset(datapath ="",trainset_percentage = 0.7,validset_percentage = 0.2,testset_percentage = 0.1,seed =3):
     '''    
 
     Parameters
