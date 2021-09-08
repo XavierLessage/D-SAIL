@@ -7,8 +7,8 @@ from typing import List, NewType
 import pydicom
 from random import randint
 
-import dicom_fields as df
-import format_tag as ft
+from dicom_fields import *
+from format_tag import *
 
 import hashlib
 import csv
@@ -316,16 +316,16 @@ def initialize_actions() -> dict:
 
     :return Dict object which map actions to tags
     """
-    anonymization_actions = generate_actions(df.D_TAGS, replace)
-    anonymization_actions.update(generate_actions(df.Z_TAGS, empty))
-    anonymization_actions.update(generate_actions(df.X_TAGS, delete))
-    anonymization_actions.update(generate_actions(df.U_TAGS, replace_UID))
-    anonymization_actions.update(generate_actions(df.Z_D_TAGS, empty_or_replace))
-    anonymization_actions.update(generate_actions(df.X_Z_TAGS, delete_or_empty))
-    anonymization_actions.update(generate_actions(df.X_D_TAGS, delete_or_replace))
-    anonymization_actions.update(generate_actions(df.X_Z_D_TAGS, delete_or_empty_or_replace))
-    anonymization_actions.update(generate_actions(df.X_Z_U_STAR_TAGS, delete_or_empty_or_replace_UID))
-    anonymization_actions.update(generate_actions(df.P_TAGS, replace_and_keep_correspondence))
+    anonymization_actions = generate_actions(D_TAGS, replace)
+    anonymization_actions.update(generate_actions(Z_TAGS, empty))
+    anonymization_actions.update(generate_actions(X_TAGS, delete))
+    anonymization_actions.update(generate_actions(U_TAGS, replace_UID))
+    anonymization_actions.update(generate_actions(Z_D_TAGS, empty_or_replace))
+    anonymization_actions.update(generate_actions(X_Z_TAGS, delete_or_empty))
+    anonymization_actions.update(generate_actions(X_D_TAGS, delete_or_replace))
+    anonymization_actions.update(generate_actions(X_Z_D_TAGS, delete_or_empty_or_replace))
+    anonymization_actions.update(generate_actions(X_Z_U_STAR_TAGS, delete_or_empty_or_replace_UID))
+    anonymization_actions.update(generate_actions(P_TAGS, replace_and_keep_correspondence))
     return anonymization_actions
 
 
@@ -419,7 +419,7 @@ def get_private_tags(anonymization_actions: dict, dataset: pydicom.Dataset) -> L
         try:
             element = dataset.get(tag)
         except:
-            print("Cannot get element from tag: ", ft.tag_to_hex_strings(tag))
+            print("Cannot get element from tag: ", tag_to_hex_strings(tag))
 
         if element and element.tag.is_private:
             private_tags.append(get_private_tag(dataset, tag))
@@ -460,7 +460,7 @@ def anonymize_dataset(dataset: pydicom.Dataset, extra_anonymization_rules: dict 
             try:
                 element = dataset.get(tag)
             except:
-                print("Cannot get element from tag: ", ft.tag_to_hex_strings(tag))
+                print("Cannot get element from tag: ", tag_to_hex_strings(tag))
 
             # Get private tag to restore it later
             if element and element.tag.is_private:
