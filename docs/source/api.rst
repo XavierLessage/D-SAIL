@@ -43,14 +43,6 @@ cat_to_dataset
    :undoc-members:
    :show-inheritance:
 
-dataset_to_cat
-""""""""""""""
-
-.. automodule:: dicom_converter.utils.dataset_to_cat
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
 dicom_to_img
 """"""""""""
 
