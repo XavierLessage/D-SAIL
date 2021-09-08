@@ -1,8 +1,5 @@
 from opacus.utils import module_modification
 from fastai.vision.all import *
-
-import sys 
-sys.path.append("..")
 from federated_learning import *
 from utils import *
 
