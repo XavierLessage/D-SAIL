@@ -3,6 +3,9 @@ API
 
 Welcome to the API.
 
+Quick access
+------------
+
 .. autosummary::
    :toctree: DIRNAME
    :recursive:
@@ -16,9 +19,10 @@ Welcome to the API.
 DICOM_PNGJSON_Converter
 -----------------------
 
+DICOM_converter
+^^^^^^^^^^^^^^^^^^^
+
 .. automodule:: DICOM_PNGJSON_Converter.DICOM_converter
-   :toctree: DIR2
-   :recursive:
    :members:
    :undoc-members:
    :show-inheritance:
