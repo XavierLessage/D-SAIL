@@ -7,7 +7,7 @@ import os
 import sys
 import tqdm
 
-from utils.simple_dicomanonymizer import *
+from dicom_pseudonymizer.utils.simple_dicomanonymizer import *
 
 def anonymize(input_path: str, output_path: str,  lookup_path: str, anonymization_actions: dict,
                 delete_private_tags: bool, rename_files: bool) -> None:
