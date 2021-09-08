@@ -9,7 +9,7 @@ Welcome to the API.
 
    Category_Trainingformat_Converter   
    DICOM_PNGJSON_Converter
-   DICOM_PNGJSON_Converter.DICOM_converter
+   DICOM_PNGJSON_Converter.DICOM_converter.decomposeDICOM
    DicomPseudonimyzer
    Hospital_Split
    LabelCreator

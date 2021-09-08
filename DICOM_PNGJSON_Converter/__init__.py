@@ -1,1 +1,1 @@
-import DICOM_PNGJSON_Converter.DICOM_converter
+import .DICOM_converter
