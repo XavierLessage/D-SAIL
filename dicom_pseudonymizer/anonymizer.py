@@ -7,21 +7,33 @@ import os
 import sys
 import tqdm
 
-from simple_dicomanonymizer import *
+from utils.simple_dicomanonymizer import *
 
 def anonymize(input_path: str, output_path: str,  lookup_path: str, anonymization_actions: dict,
-                deletePrivateTags: bool, rename_files: bool) -> None:
-    """
+                delete_private_tags: bool, rename_files: bool) -> None:
+    '''
     Read data from input path (folder or file) and launch the anonymization.
 
-    :param input_path: Path to a folder or to a file. If set to a folder,
-    then cross all over subfiles and apply anonymization.
-    :param output_path: Path to a folder or to a file.
-    :param csv_path: Path to lookup table csv path.
-    :param anonymization_actions: List of actions that will be applied on tags.
-    :param deletePrivateTags: Whether to delete private tags.
-    :param renameFiles: Whether to remane output files with pseudo. 
-    """
+    Parameters
+    ----------
+    input_path : str
+        Path to a folder or to a file. If set to a folder, 
+        then cross all over subfiles and apply anonymization.
+    output_path : str
+        Path to a folder or to a file.
+    csv_path : str
+        Path to lookup table csv path.
+    anonymization_actions : dict
+        List of actions that will be applied on tags.
+    delete_private_tags : bool
+        Whether to delete private tags.
+    rename_files : bool
+        Whether to remane output files with pseudo.
+
+    Returns
+    -------
+    None.
+    '''
     # Get input arguments
     input_folder = ''
     output_folder = ''
@@ -52,19 +64,28 @@ def anonymize(input_path: str, output_path: str,  lookup_path: str, anonymizatio
 
     progress_bar = tqdm.tqdm(total=len(input_files_list))
     for cpt in range(len(input_files_list)):
-        anonymize_dicom_file(input_files_list[cpt], output_files_list[cpt], lookup_path, anonymization_actions, deletePrivateTags, rename_files)
+        anonymize_dicom_file(input_files_list[cpt], output_files_list[cpt], lookup_path, anonymization_actions, delete_private_tags, rename_files)
         progress_bar.update(1)
 
     progress_bar.close()
 
 
 def generate_actions_dictionary(map_action_tag, defined_action_map = {}) -> dict:
-    """
+    '''
     Generate a new dictionary which maps actions function to tags
 
-    :param map_action_tag: link actions to tags
-    :param defined_action_map: link action name to action function
-    """
+    Parameters
+    ----------
+    map_action_tag : dict
+        Link actions to tags
+    defined_action_map : dict
+        Link action name to action function
+
+    Returns
+    -------
+    generated_map : dict.
+        The map of actions.
+    '''
     generated_map = {}
     cpt = 0
     for tag in map_action_tag:

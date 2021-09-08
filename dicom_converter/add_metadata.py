@@ -7,14 +7,13 @@ Created on Tue Sep  7 10:06:08 2021
 """
 import os
 import pydicom
-import json
-import shutil
 import argparse
 
 ## Add a new label 'Indication Label' for the classificatiion task
 def add_label_in_dcm(dcmFile, label, tag):
     '''
     Add the label metadata in the DICOM file
+
     Parameters
     ----------
     dcmFile : string
@@ -26,7 +25,8 @@ def add_label_in_dcm(dcmFile, label, tag):
 
     Returns
     -------
-    dcmFile with the new added metadata
+    dcmFile : string 
+        dcmFile with the new added metadata
     '''
     dcmFile.add_new(tag, "SH", label) # [0x0014,0x2016] = Indication Label
     return dcmFile
@@ -34,6 +34,7 @@ def add_label_in_dcm(dcmFile, label, tag):
 def go_through_folder(folderPath, label, tag):
     '''
     Go trough the folder to add the label tag metadata
+
     Parameters
     ----------
     folderPath : string
