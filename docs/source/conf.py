@@ -14,6 +14,11 @@ import os
 import sys
 sys.path.insert(0, os.path.abspath('../..'))
 
+import dicom_pseudonimizer.utils.dicom_fields
+import dicom_pseudonimizer.utils.format_tag
+import dicom_pseudonimizer.utils.simple_diconamonymizer
+import dicom_pseudonimizer.anonymizer
+
 
 # -- Project information -----------------------------------------------------
 
