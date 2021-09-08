@@ -45,3 +45,65 @@ trainvalidtest2cat
    :members:
    :undoc-members:
    :show-inheritance:
+
+DicomPseudonimyzer
+------------------
+
+anonymizer
+^^^^^^^^^^^^
+
+.. automodule:: DicomPseudonimyzer.anonymizer
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+dicom_fields
+^^^^^^^^^^^^
+
+.. automodule:: DicomPseudonimyzer.dicom_fields
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+format_tag
+^^^^^^^^^^
+
+.. automodule:: DicomPseudonimyzer.format_tag
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+simple_dicomanonymizer
+^^^^^^^^^^^^^^^^^^^^^^
+
+.. automodule:: DicomPseudonimyzer.simple_dicomanonymizer
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Hospital_Split
+--------------
+
+.. automodule:: Hospital_Split.hospital_split
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+LabelCreator
+-------------
+
+add_metadata
+^^^^^^^^^^^^
+
+.. automodule:: LabelCreator.add_metadata
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+classify_data
+^^^^^^^^^^^^^
+
+.. automodule:: LabelCreator.classify_data
+   :members:
+   :undoc-members:
+   :show-inheritance:
