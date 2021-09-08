@@ -67,7 +67,7 @@ dicom_pseudonimizer
 anonymizer
 ^^^^^^^^^^
 
-.. automodule:: dicom_pseudonimiser.anonymizer
+.. automodule:: dicom_pseudonimizer.anonymizer
    :members:
    :undoc-members:
    :show-inheritance:
@@ -78,7 +78,7 @@ utils
 dicom_fields
 """"""""""""
 
-.. automodule:: dicom_pseudonimiser.utils.dicom_fields
+.. automodule:: dicom_pseudonimizer.utils.dicom_fields
    :members:
    :undoc-members:
    :show-inheritance:
@@ -86,7 +86,7 @@ dicom_fields
 format_tag
 """"""""""""
 
-.. automodule:: dicom_pseudonimiser.utils.format_tag
+.. automodule:: dicom_pseudonimizer.utils.format_tag
    :members:
    :undoc-members:
    :show-inheritance:
@@ -94,7 +94,7 @@ format_tag
 simple_dicomanonymizer
 """"""""""""""""""""""
 
-.. automodule:: dicom_pseudonimiser.utils.simple_dicomanonymizer
+.. automodule:: dicom_pseudonimizer.utils.simple_dicomanonymizer
    :members:
    :undoc-members:
    :show-inheritance:
