@@ -17,6 +17,8 @@ DICOM_PNGJSON_Converter
 -----------------------
 
 .. automodule:: DICOM_PNGJSON_Converter.DICOM_converter
+   :toctree: DIR2
+   :recursive:
    :members:
    :undoc-members:
    :show-inheritance:
