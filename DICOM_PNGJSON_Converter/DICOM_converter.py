@@ -18,9 +18,11 @@ import numpy as np
 def imgFromDICOM(ds):
     '''
     Extract array from dicom dataset 'dcm' with [0,256] pixel intensities.
+
     Parameters
     ----------
     dcm : FileDataset object of pydicom.dataset module
+
     Returns
     -------
     d : array
@@ -42,6 +44,7 @@ def decomposeDICOM(file_path,output_path,img_format='bmp',removeImgInJson=False)
     '''
     Divides dicom file into a .json file with the dicom metadata and a 
     .'img_format' file containing the image.
+
     Parameters
     ----------
     file_path : string
@@ -52,6 +55,7 @@ def decomposeDICOM(file_path,output_path,img_format='bmp',removeImgInJson=False)
         Image file format : bmp, png, ... The default is 'bmp'.
     removeImgInJson : True/False, optional
         Removes PixelData from dicom metadata. The default is False.
+
     Returns
     -------
     None.
@@ -80,6 +84,7 @@ def dicomFromImgOrJson(file_path,output_folder,metadata_path=None,
                        randomizeName=False,verbose=False):
     '''
     Creates a dicom from a .json file or a .png/.bmp file
+
     Parameters
     ----------
     file_path : string
@@ -92,6 +97,7 @@ def dicomFromImgOrJson(file_path,output_folder,metadata_path=None,
         Creates a random patientID, optional
     verbose : True/False, optional
         Raises warnings. The default is False.
+
     Returns
     -------
     None.
@@ -159,6 +165,7 @@ def dicomFromImgOrJson(file_path,output_folder,metadata_path=None,
 def compressToPng(file_path,software_root,compress_ratio=1):
     '''
     Compresses an image to a .png with a specified 'compress_ratio'
+
     Parameters
     ----------
     file_path : string
@@ -167,6 +174,7 @@ def compressToPng(file_path,software_root,compress_ratio=1):
         Path to the folder containing the openjpeg .exe programs
     compress_ratio : int, optional
         Best if multiple of 8. The default is 1.
+
     Returns
     -------
     None.
