@@ -14,8 +14,9 @@ import os
 import sys
 sys.path.insert(0, os.path.abspath('../..'))
 sys.path.insert(1, os.path.abspath('../../federated_learning/client'))
+sys.path.insert(2, os.path.abspath('../../dicom_pseudonymizer/'))
 
-import dicom_pseudonymizer.anonymizer
+# autodoc_mock_imports = ["pytorch" , "opacus", "flwr", "torchvision", "fastai", "fastcore"]
 
 # -- Project information -----------------------------------------------------
 
