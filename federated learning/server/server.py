@@ -24,9 +24,9 @@ if __name__ == '__main__':
     
     strategy = SaveModelStrategy(
         fraction_fit = 1.0,
-        min_fit_clients=3,
-        min_available_clients = 3,
-        min_eval_clients = 3
+        min_fit_clients=2,
+        min_available_clients = 2,
+        min_eval_clients = 2
     )
     
 
