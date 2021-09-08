@@ -53,3 +53,5 @@ html_static_path = ['_static']
 
 # -- Options for EPUB output
 epub_show_urls = 'footnote'
+
+html_logo = 'logo.pdf'
