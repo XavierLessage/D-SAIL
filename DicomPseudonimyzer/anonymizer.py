@@ -7,7 +7,7 @@ import os
 import sys
 import tqdm
 
-# from simple_dicomanonymizer import *
+import simple_dicomanonymizer as sd
 
 def anonymize(input_path: str, output_path: str,  lookup_path: str, anonymization_actions: dict,
                 deletePrivateTags: bool, rename_files: bool) -> None:
@@ -52,7 +52,7 @@ def anonymize(input_path: str, output_path: str,  lookup_path: str, anonymizatio
 
     progress_bar = tqdm.tqdm(total=len(input_files_list))
     for cpt in range(len(input_files_list)):
-        anonymize_dicom_file(input_files_list[cpt], output_files_list[cpt], lookup_path, anonymization_actions, deletePrivateTags, rename_files)
+        sd.anonymize_dicom_file(input_files_list[cpt], output_files_list[cpt], lookup_path, anonymization_actions, deletePrivateTags, rename_files)
         progress_bar.update(1)
 
     progress_bar.close()
@@ -79,9 +79,9 @@ def generate_actions_dictionary(map_action_tag, defined_action_map = {}) -> dict
 
         # Generate the map
         if cpt == 0:
-            generated_map = generate_actions(test, action_function)
+            generated_map = sd.generate_actions(test, action_function)
         else:
-            generated_map.update(generate_actions(test, action_function))
+            generated_map.update(sd.generate_actions(test, action_function))
         cpt += 1
 
     return generated_map
@@ -138,9 +138,9 @@ def main(defined_action_map = {}):
                     action = action_name
 
                 if cpt == 0:
-                    new_anonymization_actions = generate_actions(tags_list, action, options)
+                    new_anonymization_actions = sd.generate_actions(tags_list, action, options)
                 else:
-                    new_anonymization_actions.update(generate_actions(tags_list, action, options))
+                    new_anonymization_actions.update(sd.generate_actions(tags_list, action, options))
                 cpt += 1
 
     # Read an existing dictionary
@@ -160,9 +160,9 @@ def main(defined_action_map = {}):
                 l = [ast.literal_eval(key)]
                 action = defined_action_map[action_name] if action_name in defined_action_map else eval(action_name)
                 if cpt == 0:
-                    new_anonymization_actions = generate_actions(l, action, options)
+                    new_anonymization_actions = sd.generate_actions(l, action, options)
                 else:
-                    new_anonymization_actions.update(generate_actions(l, action, options))
+                    new_anonymization_actions.update(sd.generate_actions(l, action, options))
                 cpt += 1
 
     # Launch the anonymization
