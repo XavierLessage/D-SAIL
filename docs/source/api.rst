@@ -13,7 +13,7 @@ Quick access
    :recursive:
 
    dicom_converter
-   dicom_pseudonimyzer
+   dicom_pseudonimizer
 
 dicom_converter
 -----------------------
@@ -61,13 +61,13 @@ hospital_split
    :undoc-members:
    :show-inheritance:
 
-dicom_pseudonimyzer
+dicom_pseudonimizer
 --------------------
 
 anonymizer
 ^^^^^^^^^^
 
-.. automodule:: dicom_pseudonimyzer.anonymizer
+.. automodule:: dicom_pseudonimiser.anonymizer
    :members:
    :undoc-members:
    :show-inheritance:
@@ -78,7 +78,7 @@ utils
 dicom_fields
 """"""""""""
 
-.. automodule:: dicom_pseudonimyzer.utils.dicom_fields
+.. automodule:: dicom_pseudonimiser.utils.dicom_fields
    :members:
    :undoc-members:
    :show-inheritance:
@@ -86,7 +86,7 @@ dicom_fields
 format_tag
 """"""""""""
 
-.. automodule:: dicom_pseudonimyzer.utils.format_tag
+.. automodule:: dicom_pseudonimiser.utils.format_tag
    :members:
    :undoc-members:
    :show-inheritance:
@@ -94,7 +94,7 @@ format_tag
 simple_dicomanonymizer
 """"""""""""""""""""""
 
-.. automodule:: dicom_pseudonimyzer.utils.simple_dicomanonymizer
+.. automodule:: dicom_pseudonimiser.utils.simple_dicomanonymizer
    :members:
    :undoc-members:
    :show-inheritance:
