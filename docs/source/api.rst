@@ -14,6 +14,7 @@ Quick access
 
    dicom_converter
    dicom_pseudonymizer
+   federated_learning
 
 dicom_converter
 -----------------------
