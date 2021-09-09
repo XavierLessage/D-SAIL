@@ -1,5 +1,6 @@
 from opacus.utils import module_modification
 from fastai.vision.all import *
+from fastai.callback.all import WeightedDL
 from dsail.federated_learning import *
 from dsail.utils import *
 
@@ -24,23 +25,23 @@ def main(
     seed: Param("Pass a value to set seed", int)=42,
 
 ): 
+
     device=torch.device(device)
 
     model = globals()[arch]
 
     data_path = Path(data_path) 
+    
 
     dblock = DataBlock(blocks=(ImageBlock, CategoryBlock),
         get_items = get_image_files,
         get_y = parent_label,
         splitter = GrandparentSplitter())
 
-    
-    print(dblock.datasets(data_path).train.__class__)
 
-    dls = dblock.dataloaders(data_path, bs=bs, num_workers=0)
-    #dls = dblock.dataloaders(data_path, bs=bs, num_workers=0, sample=ImbalancedDatasetSampler(dblock.datasets(data_path).train))
-
+    ds = dblock.datasets(data_path)
+    #dls = dblock.dataloaders(data_path, bs=bs, num_workers=0)
+    dls = dblock.dataloaders(data_path, bs=bs, device=device, dl_type=WeightedDL, wgts=get_imbalance_weights(ds), num_workers=0)
 
     if seed is not None: set_seed(dls, seed)
 
@@ -48,5 +49,5 @@ def main(
     learn.model = module_modification.convert_batchnorm_modules(learn.model)
     
     client = FLClient(learn,lr, epochs, apply_dp, alphas, noise_multiplier, max_grad_norm, delta, device, csv_path, data_path, matrix_path, roc_path)
-    fl.client.start_numpy_client("localhost:"+str(port), client=client)
+    fl.client.start_numpy_client("192.168.1.124:"+str(port), client=client)
 
