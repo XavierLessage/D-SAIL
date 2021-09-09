@@ -6,9 +6,9 @@
 Welcome to D-SAIL's documentation!
 ==================================
 
-Welcome to the documentation of 'Secure privacy preserving and federated machine learning' !
+Welcome to the documentation of Distributed Secure AI Learning!
 
-The code is available at https://github.com/XavierLessage/Secure-privacy-preserving-and-federated-machine-learning.
+The code is available at https://github.com/XavierLessage/D-SAIL.
 
 .. toctree::
    :caption: Getting Started

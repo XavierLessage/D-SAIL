@@ -13,6 +13,10 @@
 import os
 import sys
 sys.path.insert(0, os.path.abspath('../..'))
+sys.path.insert(1, os.path.abspath('../../federated_learning/client'))
+sys.path.insert(2, os.path.abspath('../../dicom_pseudonymizer/'))
+
+# autodoc_mock_imports = ["pytorch" , "opacus", "flwr", "torchvision", "fastai", "fastcore"]
 
 # -- Project information -----------------------------------------------------
 
@@ -32,7 +36,11 @@ extensions = [
     'sphinx.ext.autodoc',
     'sphinx.ext.autosummary',
     'sphinx.ext.intersphinx',
+    'numpydoc'
 ]
+
+numpydoc_show_class_members = False
+autosummary_generate = True
 
 intersphinx_mapping = {
     'python': ('https://docs.python.org/3/', None),
@@ -45,7 +53,9 @@ templates_path = ['_templates']
 # -- Options for HTML output
 
 html_theme = 'sphinx_rtd_theme'
-html_static_path = ['_static']
+html_static_path = [] # = ['_static']
 
 # -- Options for EPUB output
 epub_show_urls = 'footnote'
+
+html_logo = '../img/d-sail_square.png'

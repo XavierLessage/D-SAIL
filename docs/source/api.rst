@@ -9,11 +9,12 @@ Quick access
 ------------
 
 .. autosummary::
-   :toctree: DIRNAME
+   :toctree: stub
    :recursive:
 
    dicom_converter
    dicom_pseudonymizer
+   federated_learning
 
 dicom_converter
 -----------------------
@@ -98,4 +99,49 @@ simple_dicomanonymizer
    :members:
    :undoc-members:
    :show-inheritance:
+
+federated_learning
+--------------------
+
+client
+^^^^^^
+
+.. automodule:: federated_learning.client.client
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+dsail.differential_privacy
+"""""""""""""""""""""""""""
+
+.. automodule:: federated_learning.client.dsail.differential_privacy
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+dsail.federated_learning
+"""""""""""""""""""""""""""
+
+.. automodule:: federated_learning.client.dsail.federated_learning
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+dsail.utils
+""""""""""""
+
+.. automodule:: federated_learning.client.dsail.utils
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+
+server
+^^^^^^
+
+.. automodule:: federated_learning.server.server
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 
