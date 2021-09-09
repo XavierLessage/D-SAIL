@@ -136,3 +136,4 @@ dmypy.json
 # Custom
 *.csv
 .DS_Store
+/docs/source/stub/
