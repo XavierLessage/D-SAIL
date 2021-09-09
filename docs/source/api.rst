@@ -9,7 +9,7 @@ Quick access
 ------------
 
 .. autosummary::
-   :toctree: DIRNAME
+   :toctree: stub
    :recursive:
 
    dicom_converter

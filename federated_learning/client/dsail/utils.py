@@ -42,12 +42,19 @@ def save_roc(learn, path):
 
 
 class ImbalancedDatasetSampler(torch.utils.data.sampler.Sampler):
-    """Samples elements randomly from a given list of indices for imbalanced dataset
-    Arguments:
-        indices: a list of indices
-        num_samples: number of samples to draw
-        callback_get_label: a callback-like function which takes two arguments - dataset and index
-    """
+    '''
+    Samples elements randomly from a given list of indices for imbalanced dataset
+
+    Parameters
+    ----------
+    indices: list
+        a list of indices
+    num_samples: int
+        number of samples to draw
+    callback_get_label: Callable
+        a callback-like function which takes two arguments - dataset and index
+
+    '''
 
     def __init__(self, dataset, indices: list = None, num_samples: int = None, callback_get_label: Callable = None):
         # if indices is not provided, all elements in the dataset will be considered
