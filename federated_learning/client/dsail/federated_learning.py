@@ -22,7 +22,7 @@ class FLClient():
         self.set_parameters(parameters)
         cbs = []
         if self.apply_dp: cbs.append(DPCallback(alphas=self.alphas, noise_multiplier=self.noise_multiplier, max_grad_norm=self.max_grad_norm,delta = self.delta, device=self.device))
-        if self.csv_path is not None:  cbs.append(CSVLogger(fname=self.csv_path+str(self.noise_multiplier)+'_'+str(self.data_path.name)))
+        if self.csv_path is not None:  cbs.append(CSVLogger(fname=self.csv_path+str(self.noise_multiplier).replace('.', "")+'_'+str(self.data_path.name)+".csv", append=True))
         
         self.learn.fine_tune(self.ep, self.lr, cbs=cbs)
 

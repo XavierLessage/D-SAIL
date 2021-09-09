@@ -7,6 +7,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import random
 from sklearn.metrics import roc_curve, auc
+from fastai.vision.all import ClassificationInterpretation
 
 def set_seed(dls, seed):
     random.seed(seed)
@@ -101,3 +102,9 @@ class ImbalancedDatasetSampler(torch.utils.data.sampler.Sampler):
 
     def __len__(self):
         return self.num_samples
+
+def get_imbalance_weights(ds):
+    labels = [x[1] for x in ds.train]
+    _,label_counts = np.unique(labels,return_counts=True)
+    weights = torch.DoubleTensor((1/label_counts)[labels])
+    return weights
