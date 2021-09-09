@@ -1,6 +1,6 @@
 # D-SAIL - Distributed Secure AI Learning
 
-![D-SAIL](docs\img\d-sail_line.png)
+![D-SAIL](docs/img/d-sail_line.png)
 
 Welcome to the D-SAIL's Github repository!
 
