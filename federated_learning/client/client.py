@@ -40,7 +40,6 @@ def main(
 
 
     ds = dblock.datasets(data_path)
-    #dls = dblock.dataloaders(data_path, bs=bs, num_workers=0)
     dls = dblock.dataloaders(data_path, bs=bs, device=device, dl_type=WeightedDL, wgts=get_imbalance_weights(ds), num_workers=0)
 
     if seed is not None: set_seed(dls, seed)
