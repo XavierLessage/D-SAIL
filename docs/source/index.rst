@@ -8,7 +8,7 @@ Welcome to D-SAIL's documentation!
 
 Welcome to the documentation of Distributed Secure AI Learning!
 
-The code is available at https://github.com/XavierLessage/D-SAIL.
+The code is available at https://github.com/Trusted-AI-Labs/D-SAIL.
 
 .. toctree::
    :caption: Getting Started
